@@ -1,0 +1,4 @@
+*.bak
+*.bak.*
+result
+system/hosts/*/hardware-configuration.nix

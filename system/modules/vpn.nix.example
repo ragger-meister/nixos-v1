@@ -1,0 +1,25 @@
+{ config, pkgs, ... }:
+
+{
+  networking.wg-quick.interfaces.wg0 = {
+    autostart = false;
+    address = [ "10.2.0.2/32" ];
+    dns = [ "10.2.0.1" ];
+    privateKeyFile = "/etc/wireguard/private.key";
+    peers = [{
+      publicKey = "YOUR-PEER-PUBLIC-KEY";
+      endpoint = "vpn.example.com:51820";
+      allowedIPs = [ "0.0.0.0/0" "::/0" ];
+      persistentKeepalive = 25;
+    }];
+  };
+
+  services.tor.enable = true;
+  services.tor.client.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    wireguard-tools
+    tor
+    torsocks
+  ];
+}

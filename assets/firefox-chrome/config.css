@@ -1,0 +1,101 @@
+:root {
+  /* Fuente Iosevka */
+  --tf-font-family: "Iosevka Nerd Font", "Iosevka", monospace;
+  --tf-font-size: 13px;
+
+  /* Colores Tokyo Night */
+  --tf-bg: #1a1b26;
+  --tf-accent: #7aa2f7;
+  --tf-border: #1a1b26;
+
+  --lwt-accent-color: #1a1b26;
+  --lwt-text-color: #a9b1d6;
+  --toolbar-field-background-color: #1a1b26;
+  --toolbar-field-color: #a9b1d6;
+  --toolbar-field-focus-background-color: #24283b;
+  --toolbar-field-focus-color: #c0caf5;
+  --toolbarbutton-icon-fill: #7aa2f7;
+  --arrowpanel-background: #1a1b26;
+  --arrowpanel-color: #a9b1d6;
+  --arrowpanel-border-color: #24283b;
+
+  /* Minimalista: sin bordes visibles, sin títulos */
+  --tf-rounding: 0px;
+  --tf-border-width: 0px;
+  --tf-display-titles: none;
+  --tf-display-horizontal-tabs: flex;
+  --tf-display-window-controls: none;
+  --tf-display-nav-buttons: none;
+  --tf-display-urlbar-icons: none;
+  --tf-display-sidebar-tools: none;
+
+  /* Márgenes mínimos */
+  --tf-navbar-margin: 2px 4px 0px;
+  --tf-navbar-padding: 2px;
+  --tf-margin: 0.2rem;
+  
+  /* Sin ASCII art en la página de inicio */
+  --tf-newtab-logo: "";
+}
+
+/* Eliminar recuadro alrededor de las páginas */
+#tabbrowser-tabbox {
+  margin: 0 !important;
+  border: none !important;
+  padding: 0 !important;
+}
+#tabbrowser-tabbox::before {
+  display: none !important;
+}
+
+/* Navbar más compacto */
+#nav-bar {
+  margin: 2px 4px !important;
+  padding: 2px 4px !important;
+  border: none !important;
+}
+#nav-bar::before {
+  display: none !important;
+}
+
+/* Bookmarks más compacto */
+#PersonalToolbar {
+  margin: 0 4px 2px !important;
+  padding: 2px !important;
+  border: none !important;
+}
+#PersonalToolbar::before {
+  display: none !important;
+}
+
+toolbarbutton.bookmark-item:not(.subviewbutton) {
+  padding: 2px 6px !important;
+}
+
+/* Ocultar iconos de marcadores */
+toolbarbutton.bookmark-item .toolbarbutton-icon {
+  display: none !important;
+}
+
+/* Alinear marcadores a la izquierda */
+#PlacesToolbarItems {
+  justify-content: flex-start !important;
+}
+
+/* Separador | entre marcadores */
+toolbarbutton.bookmark-item:not(:last-child)::after {
+  content: "|";
+  color: #565f89;
+  margin-left: 8px;
+  font-weight: normal;
+}
+
+/* Tabs verticales más compactos */
+box#vertical-tabs {
+  margin: 2px !important;
+  padding: 2px 0 !important;
+  border: none !important;
+}
+box#vertical-tabs::before {
+  display: none !important;
+}

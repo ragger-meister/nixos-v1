@@ -74,14 +74,14 @@ in
         "$mod, G, exec, kitty -e lazygit"
         "$mod, V, exec, pavucontrol"
         "$mod, N, exec, kitty -e nvim"
-        "$mod, S, exec, kitty -e stagit"
+        "$mod, S, exec, kitty -e lazygit"
         "$mod, A, exec, kitty -e doas nix-env -qaP"
         "$mod, P, exec, grim -g \"$(slurp)\" ~/Pictures/$(date +%Y%m%d_%H%M%S).png"
         "$mod SHIFT, P, exec, grim ~/Pictures/$(date +%Y%m%d_%H%M%S).png"
         "$mod, R, exec, wf-recorder -g \"$(slurp)\" -f ~/Videos/$(date +%Y%m%d_%H%M%S).mp4"
         "$mod SHIFT, R, exec, pkill -SIGINT wf-recorder"
         "$mod, O, exec, hyprlock"
-        ''$mod, slash, exec, kitty -e sh -c 'printf "%s\n" "SHORTCUTS:" "SUPER+Return=Term" "SUPER+Space=Launcher" "SUPER+B=Browser" "SUPER+E=Files" "SUPER+T=Telegram" "SUPER+D=Docs" "SUPER+M=Mail" "SUPER+G=Git" "SUPER+N=IDE" "SUPER+S=Stagit" "SUPER+A=Package" "SUPER+V=Volume" "SUPER+P=Screenshot" "SUPER+R=Record" "SUPER+O=Lock" "SUPER+Q=Close" "SUPER+F=Fullscreen" | less' ''
+        ''$mod, slash, exec, kitty -e sh -c 'printf "%s\n" "SHORTCUTS:" "SUPER+Return=Term" "SUPER+Space=Launcher" "SUPER+B=Browser" "SUPER+E=Files" "SUPER+T=Telegram" "SUPER+D=Docs" "SUPER+M=Mail" "SUPER+G=Git" "SUPER+N=IDE" "SUPER+S=Git" "SUPER+A=Package" "SUPER+V=Volume" "SUPER+P=Screenshot" "SUPER+R=Record" "SUPER+O=Lock" "SUPER+Q=Close" "SUPER+F=Fullscreen" "SUPER+H/J/K/L=Focus" "SUPER+1-9=Workspace" | less' ''
         "$mod, 1, workspace, 1"
         "$mod, 2, workspace, 2"
         "$mod, 3, workspace, 3"
@@ -163,6 +163,9 @@ in
 
   home.file.".config/hypr/hyprlock.conf".text = themeLib.hyprlockConf;
 
+  home.file."Pictures/.keep".text = "";
+  home.file."Videos/.keep".text = "";
+
   home.packages = with pkgs; [
     kitty
     alacritty
@@ -177,7 +180,5 @@ in
     libnotify
     polkit_gnome
     fuzzelPower
-    (nerdfonts.override { fonts = [ "Iosevka" ]; })
-    iosevka
   ];
 }

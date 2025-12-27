@@ -33,7 +33,7 @@
         home-manager.users.${user.name} = { config, pkgs, ... }: {
           imports = [
             ./user/default.nix
-            ./desktop/hyprland/default.nix
+            ./desktop/hyprland
           ];
         };
       }

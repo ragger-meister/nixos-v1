@@ -10,11 +10,11 @@
       height = 28;
       modules-left = [ "custom/package" "custom/files" "custom/docs" "custom/mail" "custom/browser" "custom/ide" "custom/terminal" "custom/stagit" ];
       modules-center = [];
-      modules-right = [ "custom/telegram" "custom/vpn" "pulseaudio" "clock#time" "clock#date" "custom/power" ];
+      modules-right = [ "custom/power" "clock#date" "clock#time" "pulseaudio" "custom/vpn" "custom/telegram" ];
 
       "custom/package" = {
         format = "PACKAGE";
-        on-click = "kitty -e sh -c 'echo \"NixOS Package Manager\n\nSearch: nix search nixpkgs <term>\nInstall: doas nix-env -iA nixpkgs.<pkg>\nUpdate: doas nixos-rebuild switch --flake /etc/nixos\nGC: doas nix-collect-garbage -d\n\nPress q to exit\" | less'";
+        on-click = "kitty -e sh -c 'echo \"NixOS Package Manager\n\nSearch: nix search nixpkgs <term>\nTry: nix shell nixpkgs#<pkg>\nInstall: Add to flake, then rebuild\nUpdate: doas nixos-rebuild switch --flake /etc/nixos\nGC: doas nix-collect-garbage -d\n\nPress q to exit\" | less'";
         tooltip = false;
       };
       "custom/files" = {
@@ -70,7 +70,7 @@
         tooltip = false;
       };
       "clock#time" = {
-        format = "{:%H:%M}";
+        format = "{:%I:%M %p}";
       };
       "clock#date" = {
         format = "{:%d %b}";

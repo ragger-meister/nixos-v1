@@ -52,18 +52,30 @@
       inherit system;
       specialArgs = { inherit inputs theme themeLib user; };
       modules = baseModules ++ [
-        "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares.nix"
+        "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
         ({ pkgs, lib, ... }: {
           networking.hostName = "nixos-live";
           time.timeZone = "Europe/Madrid";
           i18n.defaultLocale = "en_US.UTF-8";
           console.keyMap = "es";
           services.openssh.settings.PermitRootLogin = lib.mkForce "no";
+
           users.users.${user.name} = {
             isNormalUser = true;
-            extraGroups = [ "wheel" "networkmanager" ];
+            extraGroups = [ "wheel" "networkmanager" "video" "audio" ];
             initialPassword = "nixos";
           };
+
+          services.displayManager.autoLogin = {
+            enable = true;
+            user = user.name;
+          };
+
+          services.xserver.displayManager.lightdm.enable = lib.mkForce true;
+          programs.hyprland.enable = true;
+          services.displayManager.defaultSession = "hyprland";
+
+          environment.systemPackages = with pkgs; [ calamares ];
           isoImage.squashfsCompression = "gzip -Xcompression-level 1";
         })
       ];

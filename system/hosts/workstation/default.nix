@@ -1,8 +1,12 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, modulesPath, ... }:
 
 {
   imports = [
-    ./hardware-configuration.nix
+    (
+      if builtins.pathExists ./hardware-configuration.nix
+      then ./hardware-configuration.nix
+      else (modulesPath + "/installer/scan/not-detected.nix")
+    )
   ];
 
   networking.hostName = "nixos";

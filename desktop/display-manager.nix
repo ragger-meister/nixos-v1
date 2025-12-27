@@ -1,4 +1,4 @@
-{ config, pkgs, theme, themeLib, ... }:
+{ config, pkgs, theme, themeLib, user, ... }:
 
 let
   asciiText = pkgs.writeText "suckless-ansishadow.txt" ''
@@ -45,7 +45,7 @@ in
         slick.enable = false;
         mini = {
           enable = true;
-          user = "anton";
+          user = user.name;
           extraConfig = themeLib.lightdmMini;
         };
       };
@@ -67,8 +67,19 @@ in
     xwayland.enable = true;
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = [ "hyprland" "gtk" ];
+  };
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    wireguard-tools
+    openvpn
+  ];
 }

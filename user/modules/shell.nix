@@ -1,6 +1,13 @@
 { config, pkgs, theme, ... }:
 
 {
+  programs.bash = {
+    enable = true;
+    historyControl = [ "erasedups" "ignorespace" ];
+    historySize = 10000;
+    historyFileSize = 20000;
+  };
+
   programs.starship = {
     enable = true;
     settings = {

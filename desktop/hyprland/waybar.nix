@@ -10,7 +10,7 @@
       height = 28;
       modules-left = [ "custom/package" "custom/files" "custom/docs" "custom/mail" "custom/browser" "custom/ide" "custom/terminal" "custom/stagit" ];
       modules-center = [];
-      modules-right = [ "custom/telegram" "custom/vpn" "pulseaudio" "clock#time" "clock#date" "custom/power" ];
+      modules-right = [ "custom/power" "clock#date" "clock#time" "pulseaudio" "custom/vpn" "custom/telegram" ];
 
       "custom/package" = {
         format = "PACKAGE";
@@ -70,7 +70,7 @@
         tooltip = false;
       };
       "clock#time" = {
-        format = "{:%H:%M}";
+        format = "{:%I:%M %p}";
       };
       "clock#date" = {
         format = "{:%d %b}";

@@ -14,7 +14,7 @@
 
       "custom/package" = {
         format = "PACKAGE";
-        on-click = "kitty -e sh -c 'echo \"NixOS Package Manager\n\nSearch: nix search nixpkgs <term>\nInstall: doas nix-env -iA nixpkgs.<pkg>\nUpdate: doas nixos-rebuild switch --flake /etc/nixos\nGC: doas nix-collect-garbage -d\n\nPress q to exit\" | less'";
+        on-click = "kitty -e sh -c 'echo \"NixOS Package Manager\n\nSearch: nix search nixpkgs <term>\nTry: nix shell nixpkgs#<pkg>\nInstall: Add to flake, then rebuild\nUpdate: doas nixos-rebuild switch --flake /etc/nixos\nGC: doas nix-collect-garbage -d\n\nPress q to exit\" | less'";
         tooltip = false;
       };
       "custom/files" = {

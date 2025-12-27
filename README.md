@@ -10,7 +10,19 @@ secrets/   credentials
 assets/    static files (firefox-chrome)
 ```
 
-## Setup
+## Test
+
+```bash
+# VM (quick test)
+nix build .#nixosConfigurations.nixos.config.system.build.vm
+./result/bin/run-nixos-vm
+
+# ISO (bootable USB)
+nix build .#nixosConfigurations.iso.config.system.build.isoImage
+# result/iso/nixos-*.iso -> write to USB with dd or ventoy
+```
+
+## Install
 
 1. Edit `flake.nix`: set `user.name` and `user.home`
 2. Generate hardware config:

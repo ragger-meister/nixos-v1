@@ -55,6 +55,7 @@
         "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
         ({ pkgs, lib, ... }: {
           networking.hostName = "nixos-live";
+          networking.wireless.enable = lib.mkForce false;
           time.timeZone = "Europe/Madrid";
           i18n.defaultLocale = "en_US.UTF-8";
           console.keyMap = "es";

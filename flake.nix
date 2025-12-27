@@ -58,6 +58,7 @@
           time.timeZone = "Europe/Madrid";
           i18n.defaultLocale = "en_US.UTF-8";
           console.keyMap = "es";
+          services.openssh.settings.PermitRootLogin = lib.mkForce "no";
           users.users.${user.name} = {
             isNormalUser = true;
             extraGroups = [ "wheel" "networkmanager" ];
